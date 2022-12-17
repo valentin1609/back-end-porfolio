@@ -29,10 +29,9 @@ public class CInformation {
    }
       
    @PutMapping("/edit")
-       public String editInformation (@RequestBody Information info){
+       public void editInformation (@RequestBody Information info){
        servInformation.editInformation(info);
        System.out.println("editInformation");
-       return "Information actualizada";
    }
    
 
