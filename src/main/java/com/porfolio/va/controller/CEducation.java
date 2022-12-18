@@ -38,22 +38,20 @@ public class CEducation {
    }
    
    @PostMapping("/add")
-   public String addEducation (@RequestBody Education edu){
+   public void addEducation (@RequestBody Education edu){
        servEducation.addEducation(edu);
-       return "Education agregado";
    }
       
    @PutMapping("/edit/{id}")
-       public String editUsuario (@RequestBody Education edu){
+       public void editUsuario (@RequestBody Education edu){
        servEducation.editEducation(edu);
-       return "Education actualizado";
    }
    
        
    @DeleteMapping("/delete/{id}")
-   public String deleteEducation(@PathVariable Long id){
+   public Long deleteEducation(@PathVariable Long id){
        servEducation.deleteEducation(id);
-       return "Education eliminado";
+       return id;
    }
     
     

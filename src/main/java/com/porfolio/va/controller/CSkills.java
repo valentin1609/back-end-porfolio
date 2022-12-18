@@ -40,10 +40,9 @@ public class CSkills {
    
    
    @PostMapping("/add")
-   public String addSkill (@RequestBody Skills skill){
+   public void addSkill (@RequestBody Skills skill){
        servSkills.addSkill(skill);
        System.out.println("addSkill");
-       return "skill agregado";
    }
       
    @PutMapping("/edit/{id}")
@@ -55,10 +54,10 @@ public class CSkills {
    
        
    @DeleteMapping("/delete/{id}")
-   public String deleteSkill(@PathVariable Long id){
+   public Long deleteSkill(@PathVariable Long id){
        servSkills.deleteSkill(id);
        System.out.println("deleteSkill");
-       return "Skill eliminado";
+       return id;
    }
    
     
