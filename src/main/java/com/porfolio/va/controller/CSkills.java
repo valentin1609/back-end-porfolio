@@ -46,10 +46,9 @@ public class CSkills {
    }
       
    @PutMapping("/edit/{id}")
-       public String editSkill (@RequestBody Skills skill){
+       public void editSkill (@RequestBody Skills skill){
        servSkills.editSkill(skill);
        System.out.println("editSkill");
-       return "Skill actualizado";
    }
    
        

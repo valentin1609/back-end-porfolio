@@ -36,22 +36,20 @@ public class CContact {
    
    
    @PostMapping("/crear")
-   public String agregarContacto (@RequestBody Contact contact){
+   public void agregarContacto (@RequestBody Contact contact){
        servContact.crearContacto(contact);
-       return "Contacto agregado";
    }
       
    @PutMapping("/actualizar/{id}")
-       public String actualizarUsuario (@RequestBody Contact contact){
+       public void actualizarContacto (@RequestBody Contact contact){
        servContact.editarContacto(contact);
-       return "Contacto actualizado";
    }
    
        
    @DeleteMapping("/borrar/{id}")
-   public String eliminarUsuario(@PathVariable Long id){
+   public Long eliminarContacto(@PathVariable Long id){
        servContact. eliminarContacto(id);
-       return "Contacto eliminado";
+       return id;
    }
     
 }

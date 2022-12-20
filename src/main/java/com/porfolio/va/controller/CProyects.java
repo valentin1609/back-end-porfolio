@@ -37,21 +37,19 @@ public class CProyects {
    
    
    @PostMapping("/crear")
-   public String agregarProyect (@RequestBody Proyects proyect){
+   public void agregarProyect (@RequestBody Proyects proyect){
        servProyects.crearProyects(proyect);
-       return "Proyect agregado";
    }
       
    @PutMapping("/actualizar/{id}")
-       public String actualizarProyect (@RequestBody Proyects proyect){
+       public void actualizarProyect (@RequestBody Proyects proyect){
        servProyects.editarProyects(proyect);
-       return "Proyect actualizado";
    }
        
    @DeleteMapping("/borrar/{id}")
-   public String eliminarProyect(@PathVariable Long id){
+   public Long eliminarProyect(@PathVariable Long id){
        servProyects.eliminarProyects(id);
-       return "Proyect eliminado";
+       return id;
    }
     
 }
