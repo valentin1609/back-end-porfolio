@@ -5,6 +5,7 @@ import com.porfolio.va.entity.Skills;
 import com.porfolio.va.service.ISSkills;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,12 +40,14 @@ public class CSkills {
    }
    
    
+   @PreAuthorize("hasRole('ADMIN')")
    @PostMapping("/add")
    public void addSkill (@RequestBody Skills skill){
        servSkills.addSkill(skill);
        System.out.println("addSkill");
    }
       
+   @PreAuthorize("hasRole('ADMIN')")
    @PutMapping("/edit/{id}")
        public String editSkill (@RequestBody Skills skill){
        servSkills.editSkill(skill);
@@ -52,7 +55,7 @@ public class CSkills {
        return "Skill actualizado";
    }
    
-       
+   @PreAuthorize("hasRole('ADMIN')")    
    @DeleteMapping("/delete/{id}")
    public Long deleteSkill(@PathVariable Long id){
        servSkills.deleteSkill(id);
