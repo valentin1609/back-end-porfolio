@@ -56,10 +56,8 @@ public class CSkills {
    
    @PreAuthorize("hasRole('ADMIN')")    
    @DeleteMapping("/delete/{id}")
-   public Long deleteSkill(@PathVariable Long id){
+   public void deleteSkill(@PathVariable Long id){
        servSkills.deleteSkill(id);
-       System.out.println("deleteSkill");
-       return id;
    }
    
     

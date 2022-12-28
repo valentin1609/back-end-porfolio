@@ -1,4 +1,3 @@
-
 package com.porfolio.va.service;
 
 import com.porfolio.va.entity.Contact;
@@ -8,30 +7,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SContact implements ISContact{
+public class SContact implements ISContact {
     
     @Autowired
     public RContact repoContact;
     
     @Override
-    public Contact verContacto(Long id){
-    Contact contact = repoContact.findById(id).orElse(null);
-    return contact;
+    public Contact verContacto(Long id) {
+        Contact contact = repoContact.findById(id).orElse(null);
+        return contact;
     }
     
     @Override
-    public List<Contact> verContactos(){
-    List<Contact> contacts = repoContact.findAll();    
-    return contacts;
+    public List<Contact> verContactos() {
+        List<Contact> contacts = repoContact.findAll();        
+        return contacts;
     }
     
     @Override
-    public void crearContacto(Contact contact){}
+    public void crearContacto(Contact contact) {
+        repoContact.save(contact);
+    }
     
     @Override
-    public void editarContacto(Contact contact){}
+    public void editarContacto(Contact contact) {
+        repoContact.save(contact);
+    }
     
     @Override
-    public void eliminarContacto(Long id){}
+    public void eliminarContacto(Long id) {
+        repoContact.deleteById(id);
+    }
     
 }

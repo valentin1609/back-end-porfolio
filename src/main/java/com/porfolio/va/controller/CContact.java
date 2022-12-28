@@ -23,33 +23,33 @@ public class CContact {
     @Autowired
     public ISContact servContact;
     
-   @GetMapping("/ver/{id}")
+   @GetMapping("/get/{id}")
    public Contact verContacto(@PathVariable  Long id){
        return servContact.verContacto(id);
    }
    
    
-   @GetMapping("/vertodos")
+   @GetMapping("/getAll")
    public List<Contact> verContactos(){
        return servContact.verContactos();
    }
    
    
-   @PostMapping("/crear")
+   @PostMapping("/add")
    public void agregarContacto (@RequestBody Contact contact){
        servContact.crearContacto(contact);
    }
       
-   @PutMapping("/actualizar/{id}")
+   @PutMapping("/edit/{id}")
        public void actualizarContacto (@RequestBody Contact contact){
        servContact.editarContacto(contact);
    }
    
        
-   @DeleteMapping("/borrar/{id}")
-   public Long eliminarContacto(@PathVariable Long id){
+   @DeleteMapping("/delete/{id}")
+   public void eliminarContacto(@PathVariable Long id){
        servContact. eliminarContacto(id);
-       return id;
+
    }
     
 }

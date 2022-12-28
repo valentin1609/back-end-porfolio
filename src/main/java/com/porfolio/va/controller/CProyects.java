@@ -24,32 +24,31 @@ public class CProyects {
    public ISProyects servProyects;
     
     
-   @GetMapping("/ver/{id}")
+   @GetMapping("/get/{id}")
    public Proyects verProyect(@PathVariable  Long id){
        return servProyects.verProyects(id);
    }
    
    
-   @GetMapping("/vertodos")
+   @GetMapping("/getAll")
    public List<Proyects> verProyects(){
        return servProyects.verProyects();
    }
    
    
-   @PostMapping("/crear")
+   @PostMapping("/add")
    public void agregarProyect (@RequestBody Proyects proyect){
        servProyects.crearProyects(proyect);
    }
       
-   @PutMapping("/actualizar/{id}")
+   @PutMapping("/edit/{id}")
        public void actualizarProyect (@RequestBody Proyects proyect){
        servProyects.editarProyects(proyect);
    }
        
-   @DeleteMapping("/borrar/{id}")
-   public Long eliminarProyect(@PathVariable Long id){
+   @DeleteMapping("/delete/{id}")
+   public void eliminarProyect(@PathVariable Long id){
        servProyects.eliminarProyects(id);
-       return id;
    }
     
 }

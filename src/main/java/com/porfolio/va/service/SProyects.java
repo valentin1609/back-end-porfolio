@@ -26,12 +26,18 @@ public class SProyects implements ISProyects{
     }
     
     @Override
-    public void crearProyects(Proyects proyect){}
+    public void crearProyects(Proyects proyect){
+    repoProyects.save(proyect);
+    }
     
     @Override
-    public void editarProyects(Proyects proyect){}
+    public void editarProyects(Proyects proyect){
+    repoProyects.save(proyect);
+    }
     
     @Override
-    public void eliminarProyects(Long id){}
+    public void eliminarProyects(Long id){
+    repoProyects.deleteById(id);
+    }
     
 }
