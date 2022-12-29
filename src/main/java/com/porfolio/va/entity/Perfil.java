@@ -1,6 +1,7 @@
 
 package com.porfolio.va.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +23,8 @@ public class Perfil {
     private String apellido;
     private String empresa;
     private String titulo;
+    
+    @Column( length = 999)
     private String presentacion;
 
     public Perfil() {

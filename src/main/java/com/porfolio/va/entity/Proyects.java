@@ -1,6 +1,7 @@
 
 package com.porfolio.va.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,10 +17,14 @@ public class Proyects {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private long id;
 
-
+@Column( length = 1500)
 private String url;
+
+@Column( length = 999)
 private String descripcion;
+
 private String nombre;
+
 private String foto;
 
     public Proyects() {
