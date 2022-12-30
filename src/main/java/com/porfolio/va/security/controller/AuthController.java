@@ -52,13 +52,13 @@ public class AuthController {
     public ResponseEntity<?> nuevo(@Validated @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
         
         if(bindingResult.hasErrors())
-            return new ResponseEntity(new Mensaje("Campos mal puestos o email invalido"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("invalid values"), HttpStatus.BAD_REQUEST);
         
         if(ServUsuario.existByUsername(nuevoUsuario.getUsername()))
-            return new ResponseEntity(new Mensaje("Ese nombre de usuario ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("the username exists"), HttpStatus.BAD_REQUEST);
         
         if(ServUsuario.existByEmail(nuevoUsuario.getEmail()))
-            return new ResponseEntity(new Mensaje("Ese email ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("the email exists"), HttpStatus.BAD_REQUEST);
         
         
         Usuario usuario = new Usuario( 
@@ -81,7 +81,7 @@ public class AuthController {
         usuario.setRoles(roles);
         ServUsuario.save(usuario);
         
-        return new ResponseEntity(new Mensaje("Usuario guardado"), HttpStatus.CREATED);
+        return new ResponseEntity(new Mensaje("saved user"), HttpStatus.CREATED);
     }
     
     @PostMapping("/login")

@@ -4,6 +4,7 @@ import com.porfolio.va.entity.Idioms;
 import com.porfolio.va.service.ISIdioms;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,16 +30,19 @@ public class CIdioms {
         return servIdioms.getIdiomlist();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add")
     public void addIdiom(@RequestBody Idioms idiom) {
         servIdioms.addIdiom(idiom);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     public void editIdiom(@RequestBody Idioms idiom) {
         servIdioms.editIdiom(idiom);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteIdiom(@PathVariable Long id) {
         servIdioms.deleteIdiom(id);

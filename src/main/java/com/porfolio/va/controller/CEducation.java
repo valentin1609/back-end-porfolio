@@ -5,6 +5,7 @@ import com.porfolio.va.entity.Education;
 import com.porfolio.va.service.ISEducation;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,17 +38,19 @@ public class CEducation {
        return servEducation.getEducationlist();
    }
    
+   @PreAuthorize("hasRole('ADMIN')")
    @PostMapping("/add")
    public void addEducation (@RequestBody Education edu){
        servEducation.addEducation(edu);
    }
       
+   @PreAuthorize("hasRole('ADMIN')")
    @PutMapping("/edit/{id}")
        public void editUsuario (@RequestBody Education edu){
        servEducation.editEducation(edu);
    }
-   
-       
+      
+   @PreAuthorize("hasRole('ADMIN')")
    @DeleteMapping("/delete/{id}")
    public Long deleteEducation(@PathVariable Long id){
        servEducation.deleteEducation(id);

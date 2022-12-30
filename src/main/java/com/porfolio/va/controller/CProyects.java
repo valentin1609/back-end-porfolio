@@ -5,6 +5,7 @@ import com.porfolio.va.entity.Proyects;
 import com.porfolio.va.service.ISProyects;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,17 +36,19 @@ public class CProyects {
        return servProyects.verProyects();
    }
    
-   
+   @PreAuthorize("hasRole('ADMIN')")
    @PostMapping("/add")
    public void agregarProyect (@RequestBody Proyects proyect){
        servProyects.crearProyects(proyect);
    }
       
+   @PreAuthorize("hasRole('ADMIN')")
    @PutMapping("/edit/{id}")
        public void actualizarProyect (@RequestBody Proyects proyect){
        servProyects.editarProyects(proyect);
    }
-       
+   
+   @PreAuthorize("hasRole('ADMIN')")    
    @DeleteMapping("/delete/{id}")
    public void eliminarProyect(@PathVariable Long id){
        servProyects.eliminarProyects(id);

@@ -4,6 +4,7 @@ package com.porfolio.va.controller;
 import com.porfolio.va.entity.Information;
 import com.porfolio.va.service.ISInformation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ public class CInformation {
        return servInformation.getInformation(id);
    }
       
+   @PreAuthorize("hasRole('ADMIN')")
    @PutMapping("/edit")
        public void editInformation (@RequestBody Information info){
        servInformation.editInformation(info);

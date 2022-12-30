@@ -5,6 +5,7 @@ import com.porfolio.va.entity.OtherSkills;
 import com.porfolio.va.service.ISOtherSkills;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,16 +31,19 @@ public class COtherSkills {
         return servOS.getOSkillslist();
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add")
     public void addOtherSkill(@RequestBody OtherSkills skill) {
         servOS.addOSkill(skill);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     public void editOtherSkill(@RequestBody OtherSkills skill) {
         servOS.editOSkill(skill);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteOtherSkill(@PathVariable Long id) {
         servOS.deleteOSkill(id);
