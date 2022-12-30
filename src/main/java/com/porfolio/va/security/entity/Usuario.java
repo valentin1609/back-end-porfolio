@@ -1,7 +1,4 @@
-
 package com.porfolio.va.security.entity;
-
-
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,35 +15,44 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter   
+@Getter
+@Setter
 public class Usuario {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-@Column(unique = true) 
-private String username;
+    private String nombre;
+    private String apellido;
 
-private String password;
+    @Column(unique = true)
+    private String username;
 
-private String email;
+    private String password;
 
-@ManyToMany(fetch = FetchType.EAGER)
+    private String email;
+
+    private String ocupacion;
+    private String empresa;
+
+    @ManyToMany(fetch = FetchType.EAGER)
 //se crea una nueva tabla usuario_rol donde estaran los id de usuario y rol
-@JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id") )
-private Set<Rol> roles = new HashSet<>(); 
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
+    private Set<Rol> roles = new HashSet<>();
 
+    public Usuario() {
+    }
 
-
-public Usuario() {
-}
-
-public Usuario(String username, String password, String email) {
-    this.username = username;
-    this.password = password;
-    this.email = email;
-}
+    public Usuario(String nombre, String apellido, String username, String password, String email, String ocupacion, String empresa) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.ocupacion = ocupacion;
+        this.empresa = empresa;
+    }
 
 
 }

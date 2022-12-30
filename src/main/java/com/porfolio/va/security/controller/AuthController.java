@@ -61,9 +61,15 @@ public class AuthController {
             return new ResponseEntity(new Mensaje("Ese email ya existe"), HttpStatus.BAD_REQUEST);
         
         
-        Usuario usuario = new Usuario( nuevoUsuario.getUsername()
-                ,passwordEncoder.encode(nuevoUsuario.getPassword())
-                , nuevoUsuario.getEmail() );
+        Usuario usuario = new Usuario( 
+                nuevoUsuario.getNombre()
+                ,nuevoUsuario.getApellido()
+                ,nuevoUsuario.getUsername() 
+                , passwordEncoder.encode(nuevoUsuario.getPassword())
+                , nuevoUsuario.getEmail() 
+                ,nuevoUsuario.getOcupacion()
+                ,nuevoUsuario.getEmpresa()
+                );
         
         //rol user por defecto
         Set<Rol> roles = new HashSet<>();
