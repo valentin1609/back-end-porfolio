@@ -1,5 +1,7 @@
 package com.porfolio.va.security.entity;
 
+import com.porfolio.va.entity.Perfil;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -9,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Getter;
@@ -23,9 +26,6 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String nombre;
-    private String apellido;
-
     @Column(unique = true)
     private String username;
 
@@ -33,8 +33,9 @@ public class Usuario {
 
     private String email;
 
-    private String ocupacion;
-    private String empresa;
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "id_perfil")
+    private Perfil perfil;
 
     @ManyToMany(fetch = FetchType.EAGER)
 //se crea una nueva tabla usuario_rol donde estaran los id de usuario y rol
@@ -44,15 +45,11 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String username, String password, String email, String ocupacion, String empresa) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Usuario(String username, String password, String email, Perfil perfil) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.ocupacion = ocupacion;
-        this.empresa = empresa;
+        this.perfil = perfil;
     }
-
 
 }

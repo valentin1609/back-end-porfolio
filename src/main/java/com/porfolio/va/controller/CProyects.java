@@ -43,7 +43,7 @@ public class CProyects {
    }
       
    @PreAuthorize("hasRole('ADMIN')")
-   @PutMapping("/edit/{id}")
+   @PutMapping("/edit")
        public void actualizarProyect (@RequestBody Proyects proyect){
        servProyects.editarProyects(proyect);
    }

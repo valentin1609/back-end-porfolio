@@ -26,12 +26,10 @@ public class SPerfil implements ISPerfil{
     }
     
     @Override
-    public void crearPerfil(Perfil perf){}
+    public void editarPerfil(Perfil perf){
+    repoPerfil.save(perf);
+    }
     
-    @Override
-    public void editarPerfil(Perfil perf){}
-    
-    @Override
-    public void eliminarPerfil(Long id){}
+
     
 }

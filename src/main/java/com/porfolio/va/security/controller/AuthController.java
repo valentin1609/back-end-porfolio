@@ -1,6 +1,7 @@
 
 package com.porfolio.va.security.controller;
 
+import com.porfolio.va.entity.Perfil;
 import com.porfolio.va.security.entity.Rol;
 import com.porfolio.va.security.entity.RolNombre;
 import com.porfolio.va.security.entity.Usuario;
@@ -62,13 +63,10 @@ public class AuthController {
         
         
         Usuario usuario = new Usuario( 
-                nuevoUsuario.getNombre()
-                ,nuevoUsuario.getApellido()
-                ,nuevoUsuario.getUsername() 
+                nuevoUsuario.getUsername() 
                 , passwordEncoder.encode(nuevoUsuario.getPassword())
                 , nuevoUsuario.getEmail() 
-                ,nuevoUsuario.getOcupacion()
-                ,nuevoUsuario.getEmpresa()
+                ,( new Perfil(nuevoUsuario.getNombre(), nuevoUsuario.getApellido(), nuevoUsuario.getOcupacion(), nuevoUsuario.getEmpresa() ))
                 );
         
         //rol user por defecto

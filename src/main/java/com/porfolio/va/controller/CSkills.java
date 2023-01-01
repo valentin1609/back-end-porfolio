@@ -48,7 +48,7 @@ public class CSkills {
    }
       
    @PreAuthorize("hasRole('ADMIN')")
-   @PutMapping("/edit/{id}")
+   @PutMapping("/edit{id}")
        public void editSkill (@RequestBody Skills skill){
        servSkills.editSkill(skill);
        System.out.println("editSkill");

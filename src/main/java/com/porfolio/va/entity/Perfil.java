@@ -21,14 +21,38 @@ public class Perfil {
     
     private String nombre;
     private String apellido;
+    private String ocupacion;
     private String empresa;
-    private String titulo;
+    
     
     @Column( length = 999)
     private String presentacion;
 
     public Perfil() {
     }
+
+    public Perfil(String nombre, String apellido, String ocupacion, String empresa, String presentacion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.ocupacion = ocupacion;
+        this.empresa = empresa;
+        this.presentacion = presentacion;
+    }
+
+    public Perfil(String nombre, String apellido, String ocupacion, String empresa) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.ocupacion = ocupacion;
+        this.empresa = empresa;
+    }
+
+
+
+
+
+
+    
+    
     
     
     

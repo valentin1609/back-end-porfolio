@@ -37,7 +37,7 @@ public class CIdioms {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/edit/{id}")
+    @PutMapping("/edit")
     public void editIdiom(@RequestBody Idioms idiom) {
         servIdioms.editIdiom(idiom);
     }

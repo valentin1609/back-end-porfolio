@@ -38,7 +38,7 @@ public class COtherSkills {
     }
     
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/edit/{id}")
+    @PutMapping("/edit")
     public void editOtherSkill(@RequestBody OtherSkills skill) {
         servOS.editOSkill(skill);
     }

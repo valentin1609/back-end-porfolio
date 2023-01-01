@@ -33,6 +33,6 @@ public class SUsuario {
     public void save(Usuario usuario) {
         repoUsuario.save(usuario);
     }
-
+    
     
 }

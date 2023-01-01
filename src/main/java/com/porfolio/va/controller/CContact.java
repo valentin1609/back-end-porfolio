@@ -42,7 +42,7 @@ public class CContact {
    }
    
     @PreAuthorize("hasRole('ADMIN')")   
-   @PutMapping("/edit/{id}")
+   @PutMapping("/edit")
        public void actualizarContacto (@RequestBody Contact contact){
        servContact.editarContacto(contact);
    }

@@ -45,7 +45,7 @@ public class CEducation {
    }
       
    @PreAuthorize("hasRole('ADMIN')")
-   @PutMapping("/edit/{id}")
+   @PutMapping("/edit")
        public void editUsuario (@RequestBody Education edu){
        servEducation.editEducation(edu);
    }
