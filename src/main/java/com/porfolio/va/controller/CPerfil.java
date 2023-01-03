@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("perfil")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"https://porfolio-frontend-35558.web.app/" , "http://localhost:4200"})
 public class CPerfil {
 
 
